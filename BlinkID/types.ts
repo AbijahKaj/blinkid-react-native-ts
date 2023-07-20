@@ -5,7 +5,7 @@ export class Date {
     day: any;
     month: any;
     year: any;
-    constructor(nativeDate) {
+    constructor(nativeDate: { day: any; month: any; year: any; }) {
         /** day in month */
         this.day = nativeDate.day;
         /** month in year */
@@ -21,7 +21,7 @@ export class Date {
 export class Point {
     x: any;
     y: any;
-    constructor(nativePoint) {
+    constructor(nativePoint: { x: any; y: any; }) {
         /** x coordinate of the point */
         this.x = nativePoint.x;
         /** y coordinate of the point */
@@ -58,7 +58,7 @@ export class DriverLicenseDetailedInfo {
     vehicleClass: any;
     conditions: any;
     vehicleClassesInfo: DriverLicenseDetailedInfo | null;
-    constructor(nativeDriverLicenseDetailedInfo) {
+    constructor(nativeDriverLicenseDetailedInfo: { restrictions: any; endorsements: any; vehicleClass: any; conditions: any; vehicleClassesInfo: null; }) {
         /**  Restrictions to driving privileges for the driver license owner. */
         this.restrictions = nativeDriverLicenseDetailedInfo.restrictions;
         /** Additional privileges granted to the driver license owner. */
@@ -68,14 +68,14 @@ export class DriverLicenseDetailedInfo {
         /** The driver license conditions. */
         this.conditions = nativeDriverLicenseDetailedInfo.conditions;
         /** The additional information on vehicle class. */
-        this.vehicleClassesInfo = nativeDriverLicenseDetailedInfo.vehicleClassesInfo != null  ? new DriverLicenseDetailedInfo(nativeBarcodeResult.driverLicenseDetailedInfo) : null;
+        this.vehicleClassesInfo = nativeDriverLicenseDetailedInfo.vehicleClassesInfo != null  ? new DriverLicenseDetailedInfo(BarcodeResult.driverLicenseDetailedInfo) : null;
     }
 }
 
 /**
  * The additional information on vehicle class.
  */
-function VehicleClassInfo(nativeVehicleClassesInfo) {
+export function VehicleClassInfo(this: any, nativeVehicleClassesInfo: { vehicleClass: any; licenceType: any; effectiveDate: any; expiryDate: any; }) {
     /**  The type of vehicle the driver license owner has privilege to drive. */
     this.vehicleClass = nativeVehicleClassesInfo.vehicleClass;
     /** The type of driver licence. */
@@ -760,6 +760,7 @@ export class BarcodeResult {
     driverLicenseDetailedInfo: any;
     empty: any;
     extendedElements: BarcodeElements | null;
+    static driverLicenseDetailedInfo: { restrictions: any; endorsements: any; vehicleClass: any; conditions: any; vehicleClassesInfo: null; };
     constructor(nativeBarcodeResult) {
 
         /** Type of the barcode scanned */
@@ -853,7 +854,7 @@ export class BarcodeResult {
         this.jurisdiction = nativeBarcodeResult.jurisdiction;
 
         /** The driver license detailed info. */
-        this.driverLicenseDetailedInfo = nativeBarcodeResult.driverLicenseDetailedInfo != null ? new BarcodeDriverLicenseDetailedInfo(nativeBarcodeResult.driverLicenseDetailedInfo) : null;
+        this.driverLicenseDetailedInfo = nativeBarcodeResult.driverLicenseDetailedInfo != null ? new DriverLicenseDetailedInfo(nativeBarcodeResult.driverLicenseDetailedInfo) : null;
 
         /** Flag that indicates if barcode result is empty */
         this.empty = nativeBarcodeResult.empty;

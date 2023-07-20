@@ -1,4 +1,4 @@
-# BlinkID SDK wrapper for React Native
+# BlinkID SDK wrapper for React Native (TypeScript port)
 
 Best-in-class ID scanning software for cross-platform apps built with React Native.
 

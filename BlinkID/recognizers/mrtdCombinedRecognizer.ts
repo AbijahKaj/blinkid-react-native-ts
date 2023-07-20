@@ -1,9 +1,9 @@
-import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
+import { Recognizer, RecognizerResult } from '../recognizer'
 import {
     MrzResult,
     DocumentFaceDetectorType,
     ImageExtensionFactors,
-} from 'blinkid-react-native/types'
+} from '../types'
 
 /**
  * Result object for MrtdCombinedRecognizer.

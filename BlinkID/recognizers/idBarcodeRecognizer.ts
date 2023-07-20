@@ -1,7 +1,7 @@
-import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
+import { Recognizer, RecognizerResult } from '../recognizer'
 import {
     Date,
-} from 'blinkid-react-native/types'
+} from '../types'
 
 /**
  * Result object for IdBarcodeRecognizer.

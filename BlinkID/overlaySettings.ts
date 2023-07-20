@@ -1,5 +1,10 @@
 /** Base class for all overlay settings objects */
 export class OverlaySettings {
+    overlaySettingsType: any;
+    useFrontCamera: boolean;
+    enableBeep: boolean;
+    language: null;
+    country: null;
     constructor(overlaySettingsType) {
         /** type of the overlay settings object */
         this.overlaySettingsType = overlaySettingsType;

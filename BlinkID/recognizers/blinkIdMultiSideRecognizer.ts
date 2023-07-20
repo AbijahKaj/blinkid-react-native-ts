@@ -1,4 +1,4 @@
-import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
+import { Recognizer, RecognizerResult } from '../recognizer'
 import {
     Date,
     MrzResult,
@@ -7,7 +7,7 @@ import {
     
     
     ImageExtensionFactors,
-} from 'blinkid-react-native/types'
+} from '../types'
 
 /**
  * Result object for BlinkIdMultiSideRecognizer.

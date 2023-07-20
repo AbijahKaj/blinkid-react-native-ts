@@ -1,4 +1,4 @@
-import { OverlaySettings } from 'blinkid-react-native/overlaySettings'
+import { OverlaySettings } from '../overlaySettings'
 
 /**
  * Class for setting up document overlay.
@@ -27,7 +27,6 @@ export class BlinkIdOverlaySettings extends OverlaySettings {
     recognitionTimeoutMessage: null;
     retryButtonText: null;
     requireDocumentSidesDataMatch: boolean;
-    language: null;
     showNotSupportedDialog: boolean;
     showFlashlightWarning: boolean;
     backSideScanningTimeoutMilliseconds: number;

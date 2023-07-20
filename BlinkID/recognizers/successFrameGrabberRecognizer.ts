@@ -4,6 +4,8 @@ import { Recognizer, RecognizerResult } from '../recognizer'
  * Result object for SuccessFrameGrabberRecognizer.
  */
 export class SuccessFrameGrabberRecognizerResult extends RecognizerResult {
+    successFrame: any;
+    slaveRecognizerResult: any;
     constructor(nativeResult, slaveRecognizerResult) {
         super(nativeResult.resultState);
 
@@ -20,12 +22,14 @@ export class SuccessFrameGrabberRecognizerResult extends RecognizerResult {
  * frame on which the other recognizer finished recognition.
  */
 export class SuccessFrameGrabberRecognizer extends Recognizer {
+    slaveRecognizer: any;
+    createResultFromNative: any;
     constructor(slaveRecognizer) {
         super('SuccessFrameGrabberRecognizer');
         /** Slave recognizer that SuccessFrameGrabberRecognizer will watch */
         this.slaveRecognizer = slaveRecognizer;
 
-        if (!this.slaveRecognizer instanceof Recognizer) {
+        if (!(this.slaveRecognizer instanceof Recognizer)) {
             throw new Error("Slave recognizer must be Recognizer!");
         }
 
