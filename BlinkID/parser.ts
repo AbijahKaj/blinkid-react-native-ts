@@ -4,6 +4,8 @@
  * and updates its result with data extracted from the image.
  */
 export class Parser {
+    parserType: any;
+    required: boolean;
     constructor(parserType) {
         /** Type of parser */
         this.parserType = parserType;
@@ -31,6 +33,7 @@ export const ParserResultState = Object.freeze(
  * Parser result contains data extracted from the image.
  */
 export class ParserResult {
+    resultState: any;
     constructor(resultState) {
         /**
          * State of the result. It is always one of the values represented by ParserResultState enum

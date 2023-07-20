@@ -47,7 +47,7 @@ class BlinkIDWrapper {
                         console.log("INTERNAL ERROR: native plugin returned wrong number of results!");
                         return [];
                   } else {
-                        let results = [];
+                        let results: any[] = [];
                         for (let i = 0; i < nativeResults.length; ++i) {
                               // native plugin must ensure types match
                               // recognizerCollection.recognizerArray[i].result = recognizerCollection.recognizerArray[i].createResultFromNative(nativeResults[i]);
@@ -76,6 +76,9 @@ import { Recognizer } from './recognizer'
  * Represents a collection of recognizer objects.
  */
 export class RecognizerCollection {
+      recognizerArray: any;
+      allowMultipleResults: boolean;
+      milisecondsBeforeTimeout: number;
       /**
        *
        * @param recognizerArray Array of recognizer objects that will be used for recognition. Must not be empty!

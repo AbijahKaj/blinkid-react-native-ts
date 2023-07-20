@@ -7,6 +7,30 @@ import {
  * Result object for UsdlRecognizer.
  */
 export class UsdlRecognizerResult extends RecognizerResult {
+    optionalElements: any;
+    rawData: any;
+    rawStringData: any;
+    uncertain: any;
+    fields: any;
+    firstName: any;
+    middleName: any;
+    lastName: any;
+    fullName: any;
+    nameSuffix: any;
+    address: any;
+    documentNumber: any;
+    sex: any;
+    restrictions: any;
+    endorsements: any;
+    vehicleClass: any;
+    dateOfBirth: Date | null;
+    dateOfIssue: Date | null;
+    dateOfExpiry: Date | null;
+    age: any;
+    street: any;
+    postalCode: any;
+    city: any;
+    jurisdiction: any;
     constructor(nativeResult) {
         super(nativeResult.resultState);
 
@@ -92,6 +116,10 @@ export class UsdlRecognizerResult extends RecognizerResult {
  * Recognizer that scan 2D barcodes from United States Driver License.
  */
 export class UsdlRecognizer extends Recognizer {
+    nullQuietZoneAllowed: boolean;
+    uncertainDecoding: boolean;
+    enableCompactParser: boolean;
+    createResultFromNative: (nativeResult: any) => UsdlRecognizerResult;
     constructor() {
         super('UsdlRecognizer');
 

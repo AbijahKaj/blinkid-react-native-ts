@@ -2,6 +2,9 @@
  * Represents a date extracted from image.
  */
 export class Date {
+    day: any;
+    month: any;
+    year: any;
     constructor(nativeDate) {
         /** day in month */
         this.day = nativeDate.day;
@@ -16,6 +19,8 @@ export class Date {
  * Represents a point in image
  */
 export class Point {
+    x: any;
+    y: any;
     constructor(nativePoint) {
         /** x coordinate of the point */
         this.x = nativePoint.x;
@@ -28,6 +33,10 @@ export class Point {
  * Represents a quadrilateral location in the image
  */
 export class Quadrilateral {
+    upperLeft: Point;
+    upperRight: Point;
+    lowerLeft: Point;
+    lowerRight: Point;
     constructor(nativeQuad) {
         /** upper left point of the quadrilateral */
         this.upperLeft = new Point(nativeQuad.upperLeft);
@@ -44,6 +53,11 @@ export class Quadrilateral {
  * Represents data extracted from the Driver's license.
  */
 export class DriverLicenseDetailedInfo {
+    restrictions: any;
+    endorsements: any;
+    vehicleClass: any;
+    conditions: any;
+    vehicleClassesInfo: DriverLicenseDetailedInfo | null;
     constructor(nativeDriverLicenseDetailedInfo) {
         /**  Restrictions to driving privileges for the driver license owner. */
         this.restrictions = nativeDriverLicenseDetailedInfo.restrictions;
@@ -236,6 +250,12 @@ export const ProcessingStatus = Object.freeze(
  * Defines possible color and moire statuses determined from scanned image.
  */
 export class ImageAnalysisResult {
+    blurred: any;
+    documentImageColorStatus: any;
+    documentImageMoireStatus: any;
+    faceDetectionStatus: any;
+    mrzDetectionStatus: any;
+    barcodeDetectionStatus: any;
     constructor(nativeImageAnalysisResult) {
         /**  Whether the image is blurred. */
         this.blurred = nativeImageAnalysisResult.blurred;
@@ -707,6 +727,39 @@ export const Type = Object.freeze(
 
 /** Defines the data extracted from the barcode. */
 export class BarcodeResult {
+    barcodeType: any;
+    rawData: any;
+    stringData: any;
+    uncertain: any;
+    firstName: any;
+    middleName: any;
+    lastName: any;
+    fullName: any;
+    additionalNameInformation: any;
+    address: any;
+    placeOfBirth: any;
+    nationality: any;
+    race: any;
+    religion: any;
+    profession: any;
+    maritalStatus: any;
+    residentialStatus: any;
+    employer: any;
+    sex: any;
+    dateOfBirth: Date | null;
+    dateOfIssue: Date | null;
+    dateOfExpiry: Date | null;
+    documentNumber: any;
+    personalIdNumber: any;
+    documentAdditionalNumber: any;
+    issuingAuthority: any;
+    street: any;
+    postalCode: any;
+    city: any;
+    jurisdiction: any;
+    driverLicenseDetailedInfo: any;
+    empty: any;
+    extendedElements: BarcodeElements | null;
     constructor(nativeBarcodeResult) {
 
         /** Type of the barcode scanned */
@@ -1713,6 +1766,8 @@ export const BarcodeElementKey = Object.freeze(
 
 /** Defines the data extracted from the visual inspection zone */
 export class BarcodeElements {
+    empty: any;
+    values: any;
     constructor(nativeBarcodeElements) {
 
         /** Flag that indicates if barcode elements is empty */
@@ -1727,6 +1782,34 @@ export class BarcodeElements {
 
 /** Defines the data extracted from the visual inspection zone */
 export class VizResult {
+    firstName: any;
+    lastName: any;
+    fullName: any;
+    additionalNameInformation: any;
+    localizedName: any;
+    address: any;
+    additionalAddressInformation: any;
+    additionalOptionalAddressInformation: any;
+    placeOfBirth: any;
+    nationality: any;
+    race: any;
+    religion: any;
+    profession: any;
+    maritalStatus: any;
+    residentialStatus: any;
+    employer: any;
+    sex: any;
+    dateOfBirth: Date | null;
+    dateOfIssue: Date | null;
+    dateOfExpiry: Date | null;
+    documentNumber: any;
+    personalIdNumber: any;
+    documentAdditionalNumber: any;
+    additionalPersonalIdNumber: any;
+    issuingAuthority: any;
+    driverLicenseDetailedInfo: DriverLicenseDetailedInfo | null;
+    empty: any;
+    documentOptionalAdditionalNumber: any;
     constructor(nativeVizResult) {
 
         /** The first name of the document owner. */
@@ -1819,6 +1902,31 @@ export class VizResult {
  * Represents data extracted from MRZ (Machine Readable Zone) of Machine Readable Travel Document (MRTD).
  */
 export class MrzResult {
+    documentType: any;
+    primaryId: any;
+    secondaryId: any;
+    issuer: any;
+    dateOfBirth: Date | null;
+    documentNumber: any;
+    nationality: any;
+    gender: any;
+    documentCode: any;
+    dateOfExpiry: Date | null;
+    opt1: any;
+    opt2: any;
+    alienNumber: any;
+    applicationReceiptNumber: any;
+    immigrantCaseNumber: any;
+    mrzText: any;
+    mrzParsed: any;
+    mrzVerified: any;
+    sanitizedOpt1: any;
+    sanitizedOpt2: any;
+    sanitizedNationality: any;
+    sanitizedIssuer: any;
+    sanitizedDocumentCode: any;
+    sanitizedDocumentNumber: any;
+    age: any;
     constructor(nativeMRZResult) {
         /**
          * Type of recognized document. It is always one of the values represented by BlinkIDScanner.MRTDDocumentType
@@ -1957,6 +2065,12 @@ export const DocumentFaceDetectorType = Object.freeze(
  * Setting is taken into account only if the right for that document is purchased.
  */
 export class RecognitionModeFilter {
+    enableMrzId: boolean;
+    enableMrzVisa: boolean;
+    enableMrzPassport: boolean;
+    enablePhotoId: boolean;
+    enableBarcodeId: boolean;
+    enableFullDocumentRecognition: boolean;
     constructor() {
         /** Enable scanning of MRZ IDs. Setting is taken into account only if the mrz_id right is purchased. */
         this.enableMrzId = true;
@@ -2011,6 +2125,10 @@ export const RecognitionMode = Object.freeze(
  * height.
  */
 export class ImageExtensionFactors {
+    upFactor: number;
+    rightFactor: number;
+    downFactor: number;
+    leftFactor: number;
     constructor() {
         /** image extension factor relative to full image height in UP direction. */
         this.upFactor = 0.0;

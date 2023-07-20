@@ -4,6 +4,7 @@
  * and updates its result with data extracted from the image.
  */
 export class Recognizer {
+    recognizerType: any;
     constructor(recognizerType) {
           /** Type of recognizer */
           this.recognizerType = recognizerType;
@@ -30,6 +31,7 @@ export const RecognizerResultState = Object.freeze(
  * Recognizer result contains data extracted from the image.
  */
 export class RecognizerResult {
+    resultState: any;
     constructor(resultState) {
         /**
          * State of the result. It is always one of the values represented by RecognizerResultState enum

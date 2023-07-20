@@ -1,28 +1,16 @@
 import { Recognizer, RecognizerResult } from '../recognizer'
 import {
-    Date,
-    Point,
-    Quadrilateral,
-    MrtdDocumentType,
     MrzResult,
-    DocumentFaceDetectorType,
-    Country,
-    Region,
-    Type,
-    DocumentImageColorStatus,
-    DocumentImageMoireStatus,
-    AnonymizationMode,
-    RecognitionModeFilter,
-    
-    
     ImageExtensionFactors,
-    DataMatchResult,
 } from '../types'
 
 /**
  * Result object for VisaRecognizer.
  */
 export class VisaRecognizerResult extends RecognizerResult {
+    faceImage: any;
+    fullDocumentImage: any;
+    mrzResult: MrzResult | null;
     constructor(nativeResult) {
         super(nativeResult.resultState);
         
@@ -48,6 +36,13 @@ export class VisaRecognizerResult extends RecognizerResult {
  * Recognizer which can scan all visas with MRZ.
  */
 export class VisaRecognizer extends Recognizer {
+    detectGlare: boolean;
+    faceImageDpi: number;
+    fullDocumentImageDpi: number;
+    fullDocumentImageExtensionFactors: ImageExtensionFactors;
+    returnFaceImage: boolean;
+    returnFullDocumentImage: boolean;
+    createResultFromNative: (nativeResult: any) => VisaRecognizerResult;
     constructor() {
         super('VisaRecognizer');
         

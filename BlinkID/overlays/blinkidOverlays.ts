@@ -1,4 +1,4 @@
-import { OverlaySettings } from '../overlaySettings'
+import { OverlaySettings } from 'blinkid-react-native/overlaySettings'
 
 /**
  * Class for setting up document overlay.
@@ -15,6 +15,24 @@ export class DocumentOverlaySettings extends OverlaySettings {
  * BlinkId overlay is best suited for recognizers that perform ID document scanning.
  */
 export class BlinkIdOverlaySettings extends OverlaySettings {
+    firstSideInstructionsText: null;
+    flipInstructions: null;
+    errorMoveCloser: null;
+    errorMoveFarther: null;
+    sidesNotMatchingTitle: null;
+    sidesNotMatchingMessage: null;
+    unsupportedDocumentTitle: null;
+    unsupportedDocumentMessage: null;
+    recognitionTimeoutTitle: null;
+    recognitionTimeoutMessage: null;
+    retryButtonText: null;
+    requireDocumentSidesDataMatch: boolean;
+    language: null;
+    showNotSupportedDialog: boolean;
+    showFlashlightWarning: boolean;
+    backSideScanningTimeoutMilliseconds: number;
+    scanBarcodeText: null;
+    errorDocumentTooCloseToEdge: null;
     constructor() {
         super('BlinkIdOverlaySettings');
         /**
@@ -126,6 +144,12 @@ export class BlinkIdOverlaySettings extends OverlaySettings {
  * Document verification overlay is best suited for combined recognizers - recognizer that perform scanning of both sides of ID documents.
  */
 export class DocumentVerificationOverlaySettings extends OverlaySettings {
+    firstSideSplashMessage: null;
+    secondSideSplashMessage: null;
+    scanningDoneSplashMessage: null;
+    firstSideInstructions: null;
+    secondSideInstructions: null;
+    glareMessage: null;
     constructor() {
         super('DocumentVerificationOverlaySettings');
         /**

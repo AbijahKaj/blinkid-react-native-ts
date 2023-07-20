@@ -1,28 +1,18 @@
-import { Recognizer, RecognizerResult } from '../recognizer'
+import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
 import {
-    Date,
-    Point,
     Quadrilateral,
-    MrtdDocumentType,
-    MrzResult,
     DocumentFaceDetectorType,
-    Country,
-    Region,
-    Type,
-    DocumentImageColorStatus,
-    DocumentImageMoireStatus,
-    AnonymizationMode,
-    RecognitionModeFilter,
-    
-    
     ImageExtensionFactors,
-    DataMatchResult,
-} from '../types'
+} from 'blinkid-react-native/types'
 
 /**
  * Result object for DocumentFaceRecognizer.
  */
 export class DocumentFaceRecognizerResult extends RecognizerResult {
+    documentLocation: Quadrilateral | null;
+    faceImage: any;
+    faceLocation: Quadrilateral | null;
+    fullDocumentImage: any;
     constructor(nativeResult) {
         super(nativeResult.resultState);
         
@@ -55,6 +45,14 @@ export class DocumentFaceRecognizerResult extends RecognizerResult {
  * Document Face Recognizer recognizer is used for scanning documents containing face images.
  */
 export class DocumentFaceRecognizer extends Recognizer {
+    detectorType: number;
+    faceImageDpi: number;
+    fullDocumentImageDpi: number;
+    fullDocumentImageExtensionFactors: ImageExtensionFactors;
+    numStableDetectionsThreshold: number;
+    returnFaceImage: boolean;
+    returnFullDocumentImage: boolean;
+    createResultFromNative: (nativeResult: any) => DocumentFaceRecognizerResult;
     constructor() {
         super('DocumentFaceRecognizer');
         

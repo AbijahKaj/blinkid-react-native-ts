@@ -1,28 +1,20 @@
-import { Recognizer, RecognizerResult } from '../recognizer'
+import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
 import {
-    Date,
-    Point,
-    Quadrilateral,
-    MrtdDocumentType,
     MrzResult,
     DocumentFaceDetectorType,
-    Country,
-    Region,
-    Type,
-    DocumentImageColorStatus,
-    DocumentImageMoireStatus,
-    AnonymizationMode,
-    RecognitionModeFilter,
-    
-    
     ImageExtensionFactors,
-    DataMatchResult,
-} from '../types'
+} from 'blinkid-react-native/types'
 
 /**
  * Result object for MrtdCombinedRecognizer.
  */
 export class MrtdCombinedRecognizerResult extends RecognizerResult {
+    documentDataMatch: any;
+    faceImage: any;
+    fullDocumentBackImage: any;
+    fullDocumentFrontImage: any;
+    mrzResult: MrzResult | null;
+    scanningFirstSideDone: any;
     constructor(nativeResult) {
         super(nativeResult.resultState);
         
@@ -69,6 +61,17 @@ export class MrtdCombinedRecognizerResult extends RecognizerResult {
  * MRTD Combined recognizer is used for scanning both front and back side of generic IDs.
  */
 export class MrtdCombinedRecognizer extends Recognizer {
+    allowSpecialCharacters: boolean;
+    allowUnparsedResults: boolean;
+    allowUnverifiedResults: boolean;
+    detectorType: number;
+    faceImageDpi: number;
+    fullDocumentImageDpi: number;
+    fullDocumentImageExtensionFactors: ImageExtensionFactors;
+    numStableDetectionsThreshold: number;
+    returnFaceImage: boolean;
+    returnFullDocumentImage: boolean;
+    createResultFromNative: (nativeResult: any) => MrtdCombinedRecognizerResult;
     constructor() {
         super('MrtdCombinedRecognizer');
         

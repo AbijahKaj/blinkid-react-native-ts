@@ -1,29 +1,73 @@
-import { Recognizer, RecognizerResult } from '../recognizer'
+import { Recognizer, RecognizerResult } from 'blinkid-react-native/recognizer'
 import {
     Date,
-    Point,
-    Quadrilateral,
-    MrtdDocumentType,
     MrzResult,
-    DocumentFaceDetectorType,
-    Country,
-    Region,
-    Type,
-    DocumentImageColorStatus,
-    DocumentImageMoireStatus,
     AnonymizationMode,
     RecognitionModeFilter,
     
     
     ImageExtensionFactors,
-    DataMatchResult,
-} from '../types'
+} from 'blinkid-react-native/types'
 
 /**
  * Result object for BlinkIdMultiSideRecognizer.
  */
 export class BlinkIdMultiSideRecognizerResult extends RecognizerResult {
-    constructor(nativeResult) {
+    additionalAddressInformation: any;
+    additionalNameInformation: any;
+    additionalOptionalAddressInformation: any;
+    address: any;
+    age: any;
+    backAdditionalProcessingInfo: any;
+    backCameraFrame: any;
+    backImageAnalysisResult: any;
+    backProcessingStatus: any;
+    backVizResult: any;
+    barcodeCameraFrame: any;
+    barcodeResult: any;
+    classInfo: any;
+    dataMatchResult: any;
+    dateOfBirth: Date | null;
+    dateOfExpiry: Date | null;
+    dateOfExpiryPermanent: any;
+    dateOfIssue: Date | null;
+    documentAdditionalNumber: any;
+    documentDataMatch: any;
+    documentNumber: any;
+    documentOptionalAdditionalNumber: any;
+    driverLicenseDetailedInfo: any;
+    employer: any;
+    expired: any;
+    faceImage: any;
+    fathersName: any;
+    firstName: any;
+    frontAdditionalProcessingInfo: any;
+    frontCameraFrame: any;
+    frontImageAnalysisResult: any;
+    frontProcessingStatus: any;
+    frontVizResult: any;
+    fullDocumentBackImage: any;
+    fullDocumentFrontImage: any;
+    fullName: any;
+    issuingAuthority: any;
+    lastName: any;
+    localizedName: any;
+    maritalStatus: any;
+    mothersName: any;
+    mrzResult: MrzResult | null;
+    nationality: any;
+    personalIdNumber: any;
+    placeOfBirth: any;
+    processingStatus: any;
+    profession: any;
+    race: any;
+    recognitionMode: any;
+    religion: any;
+    residentialStatus: any;
+    scanningFirstSideDone: any;
+    sex: any;
+    signatureImage: any;
+    constructor(nativeResult: { resultState: any; additionalAddressInformation: any; additionalNameInformation: any; additionalOptionalAddressInformation: any; address: any; age: any; backAdditionalProcessingInfo: any; backCameraFrame: any; backImageAnalysisResult: any; backProcessingStatus: any; backVizResult: any; barcodeCameraFrame: any; barcodeResult: any; classInfo: any; dataMatchResult: any; dateOfBirth: null; dateOfExpiry: null; dateOfExpiryPermanent: any; dateOfIssue: null; documentAdditionalNumber: any; documentDataMatch: any; documentNumber: any; documentOptionalAdditionalNumber: any; driverLicenseDetailedInfo: any; employer: any; expired: any; faceImage: any; fathersName: any; firstName: any; frontAdditionalProcessingInfo: any; frontCameraFrame: any; frontImageAnalysisResult: any; frontProcessingStatus: any; frontVizResult: any; fullDocumentBackImage: any; fullDocumentFrontImage: any; fullName: any; issuingAuthority: any; lastName: any; localizedName: any; maritalStatus: any; mothersName: any; mrzResult: null; nationality: any; personalIdNumber: any; placeOfBirth: any; processingStatus: any; profession: any; race: any; recognitionMode: any; religion: any; residentialStatus: any; scanningFirstSideDone: any; sex: any; signatureImage: any; }) {
         super(nativeResult.resultState);
         
         /**
@@ -315,6 +359,26 @@ export class BlinkIdMultiSideRecognizerResult extends RecognizerResult {
  * Recognizer which can scan front and back side of the United States driver license.
  */
 export class BlinkIdMultiSideRecognizer extends Recognizer {
+    allowBlurFilter: boolean;
+    allowUncertainFrontSideScan: boolean;
+    allowUnparsedMrzResults: boolean;
+    allowUnverifiedMrzResults: boolean;
+    anonymizationMode: number;
+    faceImageDpi: number;
+    fullDocumentImageDpi: number;
+    fullDocumentImageExtensionFactors: ImageExtensionFactors;
+    maxAllowedMismatchesPerField: number;
+    paddingEdge: number;
+    recognitionModeFilter: RecognitionModeFilter;
+    returnFaceImage: boolean;
+    returnFullDocumentImage: boolean;
+    returnSignatureImage: boolean;
+    saveCameraFrames: boolean;
+    scanCroppedDocumentImage: boolean;
+    signatureImageDpi: number;
+    skipUnsupportedBack: boolean;
+    validateResultCharacters: boolean;
+    createResultFromNative: (nativeResult: any) => BlinkIdMultiSideRecognizerResult;
     constructor() {
         super('BlinkIdMultiSideRecognizer');
         
